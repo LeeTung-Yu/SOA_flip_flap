@@ -36,9 +36,19 @@ module TsvBuddy
   end
 end
 
+def to_tsv_c
+  #prepare a string called tsv and first write the header names
+  tsv = @data[0].keys.join("\t") + "\n"
+  #for each hash in data, get all the values, separated by tab and add a new line for the next row
+  @data.each do |hash|
+    tsv += hash.values.join("\t") + "\n"
+  end
+  #return the string tsv
+  tsv
+end
   # to_tsv: converts @data into tsv string
   # returns: String in TSV format
-  def to_tsv
+  def to_tsv #does not work according to spec
     header_item = @data[0]
     header_info = []
     header_item.each_key { | key | header_info.push(key) }
