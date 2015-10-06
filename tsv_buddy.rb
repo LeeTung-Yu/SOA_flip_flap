@@ -7,8 +7,7 @@ module TsvBuddy
   # take_tsv: converts a String with TSV data into @data
   # parameter: tsv - a String in TSV format
   def take_tsv(tsv)
-    hash = []
-    hash_temp = []
+    hash, hash_temp= [], []
     tsv.each_line { |line| hash_temp << line}
     header = hash_temp[0].chop.split("\t")
     # each key store in header
@@ -25,15 +24,14 @@ module TsvBuddy
   # to_tsv: converts @data into tsv string
   # returns: String in TSV format
   def to_tsv
-    header_item = @data[0]
-    header_info = []
+    header_item, header_info, content_info = @data[0], [], []
     header_item.each_key { | key | header_info.push(key) }
     content = ""
     content << header_info[0]
     header_info.shift
     content << header_info.each { |n1| content << "\t" + n1 } + "\n"
     # title finished
-    content_info = []
+    
     @data.each do |row|
       item_arr = @data[row]
       item_arr.each_value { |value| content_info.push(value)}
