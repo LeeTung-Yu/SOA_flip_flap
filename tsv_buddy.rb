@@ -22,6 +22,20 @@ module TsvBuddy
     @data = hash
   end
 
+  def take_tsv_c(tsv)
+  #Suggestions
+  #-Search for methods that do not require you to create empty variables.
+  #-Run rubocop on your code.
+  #-Whenever possible, try to use 10 lines of code or less in your methods
+  tsv_arr = tsv.lines
+  header = tsv_arr[0].chop.split("\t")
+  tsv_arr.shift
+  @data = tsv_arr.map do |line|
+    value = line.chop.split("\t")
+    (header.zip(value)).to_h
+  end
+end
+
   # to_tsv: converts @data into tsv string
   # returns: String in TSV format
   def to_tsv
