@@ -6,7 +6,7 @@ module TsvBuddy
 
   # take_tsv: converts a String with TSV data into @data
   # parameter: tsv - a String in TSV format
-  def take_tsv(tsv)
+  def take_tsv_LTY(tsv)
     hash = []
     hash_temp = []
     tsv.each_line { |line| hash_temp << line}
@@ -22,7 +22,7 @@ module TsvBuddy
     @data = hash
   end
 
-  def take_tsv_c(tsv)
+  def take_tsv(tsv)
   #Suggestions
   #-Search for methods that do not require you to create empty variables.
   #-Run rubocop on your code.
@@ -36,7 +36,7 @@ module TsvBuddy
   end
 end
 
-def to_tsv_c
+def to_tsv
   #prepare a string called tsv and first write the header names
   tsv = @data[0].keys.join("\t") + "\n"
   #for each hash in data, get all the values, separated by tab and add a new line for the next row
@@ -48,7 +48,7 @@ def to_tsv_c
 end
   # to_tsv: converts @data into tsv string
   # returns: String in TSV format
-  def to_tsv #does not work according to spec
+  def to_tsv_LTY #does not work according to spec
     header_item = @data[0]
     header_info = []
     header_item.each_key { | key | header_info.push(key) }
